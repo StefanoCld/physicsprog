@@ -8,7 +8,18 @@ public class TwoHandController : MonoBehaviour
     private bool RwasPlank = false;
 
     [SerializeField]
-    private float releaseTime = 1f;
+    [Range(100f, 10000f)]
+    [Tooltip("Usually around 1500f")]
+    private float jointSpringForce = 1250f;
+
+    [SerializeField]
+    [Range(0.05f, 2f)]
+    [Tooltip("Usually around 0.9")]
+    private float releaseTime = 0.85f;
+
+    [SerializeField]
+    [Range(0f, 90f)]
+    private float springTargetPosition = 90f;
 
     [Header("Joints")]
     [SerializeField]
@@ -20,13 +31,13 @@ public class TwoHandController : MonoBehaviour
     [SerializeField]
     private HingeJoint LForearmJoint;
 
-    [Header("LRigidbody")]
+    [Header("Rigidbody")]
     [SerializeField]
     private Rigidbody LHand;
     [SerializeField]
     private Rigidbody RHand;
 
-    [Header("HandCollider")]
+    [Header("HandColliders")]
     [SerializeField]
     private SphereCollider LhandCollider;
     [SerializeField]
@@ -37,11 +48,11 @@ public class TwoHandController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             JointSpring Lvar = new JointSpring();
-            Lvar.spring = 1000f; 
+            Lvar.spring = jointSpringForce; 
             
             if (LwasPlank)
             {
-                Lvar.targetPosition = 90;
+                Lvar.targetPosition = springTargetPosition;
                 LwasPlank = false;
             }
             else
@@ -54,11 +65,11 @@ public class TwoHandController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
         {
             JointSpring Rvar = new JointSpring();
-            Rvar.spring = 1000f;
+            Rvar.spring = jointSpringForce;
 
             if (RwasPlank)
             {
-                Rvar.targetPosition = 90;
+                Rvar.targetPosition = springTargetPosition;
                 RwasPlank = false;
             }
             else
@@ -75,7 +86,7 @@ public class TwoHandController : MonoBehaviour
 
             JointSpring var = new JointSpring();
 
-            var.spring = 1000f;
+            var.spring = jointSpringForce;
             var.targetPosition = 0f;
 
             RArmJoint.spring = var;
