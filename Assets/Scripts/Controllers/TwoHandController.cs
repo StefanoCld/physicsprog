@@ -9,12 +9,10 @@ public class TwoHandController : MonoBehaviour
 
     [SerializeField]
     [Range(100f, 10000f)]
-    [Tooltip("Usually around 1500f")]
     private float jointSpringForce = 1250f;
 
     [SerializeField]
     [Range(0.05f, 2f)]
-    [Tooltip("Usually around 0.9")]
     private float releaseTime = 0.85f;
 
     [SerializeField]
@@ -129,4 +127,3 @@ public class TwoHandController : MonoBehaviour
         RhandCollider.enabled = true;
     }
 }
-
