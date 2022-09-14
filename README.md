@@ -1,5 +1,7 @@
 ## What is it?
 
+<img src="preview.png"  width=50% height=50%>
+
 It's a physics-driven ragdoll-climber prototype game.
 By controlling the character, the player has to use the yellow spheres as an hold, and as a lever 
 to generate angular motion which will allow the character “to be thrown” at the other spheres.
