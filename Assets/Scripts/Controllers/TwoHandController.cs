@@ -7,6 +7,12 @@ public class TwoHandController : MonoBehaviour
     private bool LwasPlank = false;
     private bool RwasPlank = false;
 
+    [Header("Audio sources (hands)")]
+    [SerializeField]
+    private AudioSource leftHandAudioSource;
+    [SerializeField]
+    private AudioSource rightHandAudioSource;
+
     [SerializeField]
     [Range(100f, 10000f)]
     private float jointSpringForce = 1250f;
@@ -114,6 +120,11 @@ public class TwoHandController : MonoBehaviour
 
     IEnumerator LReleaseHand()
     {
+        if (LHand.isKinematic)
+        {
+            leftHandAudioSource.Play();
+        }
+
         LHand.isKinematic = false;
         LhandCollider.enabled = false;
         yield return new WaitForSeconds(releaseTime);
@@ -121,6 +132,11 @@ public class TwoHandController : MonoBehaviour
     }
     IEnumerator RReleaseHand()
     {
+        if (RHand.isKinematic) 
+        {
+            rightHandAudioSource.Play();
+        }
+
         RHand.isKinematic = false;
         RhandCollider.enabled = false;
         yield return new WaitForSeconds(releaseTime);
