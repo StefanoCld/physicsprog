@@ -27,4 +27,4 @@ Originally made for the physics programming course @ Master Game Dev - Universit
 
 ## Demo Video
 
-**[Youtube link]**(https://www.youtube.com/watch?v=wCmoRJLx3Yk)
+**[Youtube link](https://www.youtube.com/watch?v=wCmoRJLx3Yk)**
